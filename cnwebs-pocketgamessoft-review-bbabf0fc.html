@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pg模拟器 · 介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f3f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #2c3e50;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* hero / 开场短句 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 3rem 2rem 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6e9ed;
+      text-align: center;
+    }
+
+    .hero-card h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: -0.3px;
+      color: #1b2838;
+    }
+
+    .hero-card .tagline {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #4b5e6b;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-card .tagline span {
+      background: #eef2f7;
+      padding: 0.05rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 500;
+      color: #1d3a4f;
+    }
+
+    /* 承接段落卡片 */
+    .section-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e3e7ed;
+    }
+
+    .section-card h2 {
+      font-size: 1.35rem;
+      font-weight: 540;
+      color: #1b2b39;
+      margin-bottom: 0.9rem;
+      border-left: 4px solid #7f92a3;
+      padding-left: 0.85rem;
+    }
+
+    .section-card p {
+      margin-bottom: 1rem;
+      color: #2f4050;
+    }
+
+    .section-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .soft-link {
+      color: #2b5778;
+      text-decoration: none;
+      border-bottom: 1px solid #b7c9d9;
+      transition: border-bottom 0.2s, color 0.2s;
+    }
+
+    .soft-link:hover {
+      border-bottom: 1px solid #2b5778;
+      color: #173247;
+    }
+
+    /* 特点列表 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .feature-item {
+      background: #f6f8fa;
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      border: 1px solid #e0e4ea;
+      transition: box-shadow 0.15s;
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 550;
+      color: #1c3142;
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-item span {
+      font-size: 0.92rem;
+      color: #3d5466;
+    }
+
+    /* 场景 / 附加说明 */
+    .scenario-note {
+      background: #fafbfc;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 0.5rem;
+      border-left: 4px solid #b6c7d6;
+    }
+
+    .scenario-note p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* 提示 / FAQ 摘要 */
+    .tip-card {
+      background: #f4f7fa;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      border: 1px solid #dce1e8;
+    }
+
+    .tip-card h3 {
+      font-weight: 520;
+      font-size: 1.1rem;
+      color: #1f3546;
+      margin-bottom: 0.7rem;
+    }
+
+    .tip-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tip-items li {
+      padding-left: 1.3rem;
+      position: relative;
+      color: #2f4357;
+    }
+
+    .tip-items li::before {
+      content: "·";
+      position: absolute;
+      left: 0.25rem;
+      color: #6d8ba3;
+      font-weight: bold;
+    }
+
+    /* 温和结尾 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.92rem;
+      color: #6d7f8e;
+      padding: 0.6rem 0 1.2rem;
+      border-top: 1px solid #dde2e8;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note a {
+      color: #2b5778;
+      text-decoration: none;
+      border-bottom: 1px dotted #a2b7c9;
+    }
+
+    .footer-note a:hover {
+      border-bottom: 1px solid #2b5778;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero-card h1 {
+        font-size: 1.8rem;
+      }
+      .hero-card .tagline {
+        font-size: 1rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-card {
+        padding: 1.5rem;
+      }
+      .hero-card {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 开场短句 hero -->
+  <div class="hero-card">
+    <h1>模拟器 · 实用参考</h1>
+    <div class="tagline">
+      一份关于 <span>pg模拟器</span> 的简要说明<br>
+      以及站点内容的整理笔记
+    </div>
+  </div>
+
+  <!-- 承接段落：站点介绍与可信说明 -->
+  <div class="section-card">
+    <h2>关于这个介绍页</h2>
+    <p>
+      这里整理了来自 <a href="https://cnwebs-pocketgamessoft.com" class="soft-link">pg模拟器</a> 
+      相关的一些基本说明与使用参考。内容侧重介绍该模拟器的功能定位、运行环境以及常见的适用场景，
+      同时附带一些经过验证的注意事项。这份材料并非官方文档，而是基于公开信息与社区经验整理而成，
+      希望能为初次了解的朋友提供一条清晰的线索。
+    </p>
+    <p>
+      模拟器软件本身提供了一套兼容性方案，让部分原本在特定平台上运行的程序或游戏能够迁移到桌面环境。
+      在浏览站点时，您可以留意版本更新说明与系统要求部分，这些信息往往能帮助您快速判断当前版本是否适合您的设备。
+    </p>
+  </div>
+
+  <!-- 特点列表卡片 -->
+  <div class="section-card">
+    <h2>特点一览</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>跨平台支持</strong>
+        <span>Windows / macOS / Linux 基础环境均覆盖，降低硬件门槛。</span>
+      </div>
+      <div class="feature-item">
+        <strong>配置灵活</strong>
+        <span>提供多组默认配置预设，也允许手动调整关键参数。</span>
+      </div>
+      <div class="feature-item">
+        <strong>社区更新</strong>
+        <span>定期发布修正补丁与优化版本，修复兼容性问题。</span>
+      </div>
+      <div class="feature-item">
+        <strong>轻量封装</strong>
+        <span>核心程序体积较小，不捆绑额外软件，安装过程简洁。</span>
+      </div>
+    </div>
+
+    <!-- 场景说明 -->
+    <div class="scenario-note">
+      <p><strong>📌 常见使用场景：</strong></p>
+      <p>测试与体验部分经典应用 / 独立游戏移植 / 本地化功能验证 / 旧版本存档回顾。</p>
+      <p style="margin-top:0.3rem;">模拟器本身不包含任何数字版权内容，使用者需自行准备合法数据文件。</p>
+    </div>
+  </div>
+
+  <!-- 提示 / FAQ 摘要 -->
+  <div class="tip-card">
+    <h3>🔹 常见注意点 · 摘要</h3>
+    <ul class="tip-items">
+      <li>运行前建议关闭后台高占用程序，避免资源冲突。</li>
+      <li>如果遇到启动异常，优先检查文件完整性以及依赖库（如 Visual C++ 等）。</li>
+      <li>不同操作系统版本可能存在细微差异，请以发布页的兼容列表为准。</li>
+      <li>模拟器本身不会修改系统关键配置，但建议定期备份重要数据。</li>
+    </ul>
+  </div>
+
+  <!-- 温和结尾 + 链接自然出现 -->
+  <div class="footer-note">
+    <p>本页为静态介绍参考，更详细的内容请直接访问 <a href="https://cnwebs-pocketgamessoft.com">pg模拟器</a> 站点。</p>
+    <p style="margin-top:0.2rem;">— 内容整理基于公开资料，如有变化以官方页面为准 —</p>
+  </div>
+
+</div>
+</body>
+</html>
